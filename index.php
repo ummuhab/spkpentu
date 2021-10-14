@@ -28,7 +28,7 @@
 
 				<form action="cek_login.php" method="post">
 					<div class="input-group mb-4">
-						<input type="username" class="form-control" name="username" placeholder="username" required />
+						<input type="username" class="form-control" name="username" id="username" placeholder="username" required />
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-envelope"></span>
@@ -36,7 +36,7 @@
 						</div>
 					</div>
 					<div class="input-group mb-3">
-						<input type="password" name="pw" class="form-control" placeholder="Password" required />
+						<input type="password" name="pw" id="pw" class="form-control" placeholder="Password" required />
 						<div class="input-group-append">
 							<div class="input-group-text">
 								<span class="fas fa-lock"></span>
@@ -44,21 +44,10 @@
 						</div>
 					</div>
 
-
-					<div class="row">
-						<div class="col-8">
-							<div class="icheck-primary">
-								<input type="checkbox" id="remember">
-								<label for="remember">
-									Remember Me
-								</label>
-							</div>
-						</div>
-					</div>
 					<!-- /.col -->
 					<div class="row">
 						<div class="col-4">
-							<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+							<button type="submit" name="submit" id="submit" class="btn btn-primary btn-block">Sign In</button>
 						</div>
 						<!-- /.col -->
 					</div>
@@ -66,10 +55,6 @@
 
 
 				<!-- /.social-auth-links -->
-
-				<p class="mb-1">
-					<a href="forgot-password.html">I forgot my password</a>
-				</p>
 			</div>
 			<!-- /.card-body -->
 		</div>
