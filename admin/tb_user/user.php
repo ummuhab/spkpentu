@@ -128,9 +128,9 @@
                                                                         <label>User Level</label>
                                                                         <select class="custom-select rounded-0" name="lvl" id="lvl" required="required">
                                                                             <option>--Pilih Salah Satu---</option>
-                                                                            <option>TIM PMB</option>
-                                                                            <option>BAAK</option>
-                                                                            <option>Keuangan</option>
+                                                                            <option value="TIM PMB">TIM PMB</option>
+                                                                            <option value="BAAK">BAAK</option>
+                                                                            <option value="Keuangan">Keuangan</option>
                                                                         </select>
                                                                     </div>
                                                             </div>
@@ -204,9 +204,9 @@
                                 <label>User Level</label>
                                 <select class="custom-select rounded-0" name="lvl" id="lvl" required="required">
                                     <option>--Pilih Salah Satu---</option>
-                                    <option>TIM PMB</option>
-                                    <option>BAAK</option>
-                                    <option>Keuangan</option>
+                                    <option value="TIM PMB">TIM PMB</option>
+                                    <option value="BAAK">BAAK</option>
+                                    <option value="Keuangan">Keuangan</option>
                                 </select>
                             </div>
                             <!-- </div> -->

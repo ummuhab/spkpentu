@@ -9,7 +9,7 @@ function tambah($data)
     $pw = $data['pw'];
     $lvl = $data['lvl'];
 
-    $query = "insert INTO tb_user VALUES ('$u',' $pw', '$lvl')";
+    $query = "insert INTO tb_user VALUES ('$u','$pw', '$lvl')";
     mysqli_query($koneksi, $query);
     return mysqli_affected_rows($koneksi);
 }
