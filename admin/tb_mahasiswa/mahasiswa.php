@@ -49,6 +49,17 @@
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+
+          <form method="post" enctype="multipart/form-data" action="upload_aksi.php">
+            <div class="form-group">
+              <h5>IMPORT DATA</h5>
+              Pilih File:
+              <input name="mahasiswa" type="file" required="required">
+              <input name="upload" type="submit" value="Import">
+            </div>
+          </form>
+
+
           <a href="tambah_mahasiswa.php" class="btn btn-success pull-right"><i class="fas fa-plus"></i><span> Tambah Data</span></a>
           <br></br>
           <table id="example1" class="table table-bordered table-striped">
