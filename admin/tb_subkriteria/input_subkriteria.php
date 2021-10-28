@@ -7,11 +7,11 @@ function tambah($data)
 
     $id_subkriteria = $data['id_subkriteria'];
     $nama_subkriteria = $data['nama_subkriteria'];
-    $nama_kriteria = $data['nama_kriteria'];
+    $id_kriteria = $data['id_kriteria'];
     $nilai_kriteria = $data['nilai_kriteria'];
 
 
-    $query = "insert INTO tb_subkriteria VALUES ('$id_subkriteria','$nama_subkriteria', '$nama_kriteria', '$nilai_kriteria')";
+    $query = "insert INTO tb_subkriteria VALUES ('$id_subkriteria','$nama_subkriteria', '$id_kriteria', '$nilai_kriteria')";
     mysqli_query($koneksi, $query);
     return mysqli_affected_rows($koneksi);
 }
