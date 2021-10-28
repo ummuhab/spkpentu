@@ -59,7 +59,7 @@
                   <center>ID Sub Kriteria</center>
                 </th>
                 <th>
-                  <center>Nama Kriteria</center>
+                  <center>Nama SubKriteria</center>
                 </th>
                 <th>
                   <center>ID Kriteria</center>
