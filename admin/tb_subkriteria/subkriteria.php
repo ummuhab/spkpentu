@@ -205,14 +205,25 @@
     $row = mysqli_fetch_array($query);
     $totalrow = mysqli_num_rows($query);
 
-    if ($totalrow > 0) {
-      $id_terakhir = substr($row['id_subkriteria'], -3);
-      $nourut = $id_terakhir + 1;
-      $isiid = "SK-" . "00" . $nourut;
-    } else if ($totalrow == 0) {
-      $nourut = 1;
-      $isiid = "SK-" . "00" . $nourut;
+    if ($totalrow <= 9) {
+      $no = $totalrow + 1;
+      $isiid = "SK-00" . $no;
+      // $id_terakhir = substr($row['id_subkriteria'], -3);
+      // $nourut = $id_terakhir + 1;
+      // $isiid = "SK-" .  $nourut;
+    } elseif ($totalrow > 9) {
+      $no = $totalrow + 1;
+      $isiid = "SK-0" . $no;
+    } elseif ($totalrow > 99) {
+      $no = $totalrow + 1;
+      $isiid = "SK-" . $no;
     }
+    //  else if ($totalrow == 0) {
+    //   $no = 1;
+    //   $isiid = "SK-00" . $no;
+    //   // $nourut = 1;
+    //   // $isiid = "SK-" .  $nourut;
+    // }
 
 
     ?>
