@@ -48,6 +48,14 @@
            </a>
          </li>
          <li class="nav-item">
+           <a href="../tb_prodi/prodi.php" class="nav-link">
+             <i class="nav-icon fas fa-book"></i>
+             <p>
+               Data Prodi
+             </p>
+           </a>
+         </li>
+         <li class="nav-item">
            <a href="../tb_levelukt/levelukt.php" class="nav-link">
              <i class="nav-icon fas fa-th"></i>
              <p>

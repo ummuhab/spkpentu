@@ -4,7 +4,7 @@ include "config.php";
 $NIM = $_POST['NIM'];
 $nama_mhs = $_POST['nama_mhs'];
 $jk = $_POST['jk'];
-$prodi = $_POST['prodi'];
+$nama_prodi = $_POST['nama_prodi'];
 $jml_penghasilan_ortu = $_POST['jml_penghasilan_ortu'];
 $assets = $_POST['assets'];
 $tanggungan = $_POST['tanggungan'];
@@ -14,7 +14,7 @@ $sumber_air = $_POST['sumber_air'];
 $jns_pekerjaan_ayah = $_POST['jns_pekerjaan_ayah'];
 $jns_pekerjaan_ibu = $_POST['jns_pekerjaan_ibu'];
 
-$query = "INSERT INTO tb_mahasiswa VALUES ('$NIM','$nama_mhs', '$jk', '$prodi', '$jml_penghasilan_ortu',
+$query = "INSERT INTO tb_mahasiswa VALUES ('$NIM','$nama_mhs', '$jk', '$nama_prodi', '$jml_penghasilan_ortu',
     '$assets', '$tanggungan', '$jarak_rumah', '$daya_listrik',
     '$sumber_air', '$jns_pekerjaan_ayah', '$jns_pekerjaan_ibu')";
 mysqli_query($koneksi, $query);

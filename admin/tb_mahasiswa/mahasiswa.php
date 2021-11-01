@@ -24,7 +24,7 @@
     require_once 'config.php';
     include '../../AdminLTE/header.php';
     include '../../AdminLTE/sidebar.php';
-    ?>f
+    ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -129,7 +129,7 @@
                     <?php echo $row['jk']; ?>
                   </td>
                   <td>
-                    <?php echo $row['prodi']; ?>
+                    <?php echo $row['nama_prodi']; ?>
                   </td>
                   <td>
                     <?php echo $row['jml_penghasilan_ortu']; ?>

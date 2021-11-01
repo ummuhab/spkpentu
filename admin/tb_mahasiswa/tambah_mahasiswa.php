@@ -78,73 +78,41 @@ require_once 'config.php';
                                         </div>
                                         <div class="form-group">
                                             <label>Prodi</label>
-                                            <select class="custom-select rounded-0" name="prodi" id="prodi" required="required">
-                                                <option>--Pilih Salah Satu---</option>
-                                                <option>D3 TE</option>
-                                                <option>D3 TL</option>
-                                                <option>D3 TI</option>
-                                                <option>D3 TM</option>
-                                                <option>D4 TPPL</option>
-                                                <option>D4 PPA</option>
+                                            <select class="custom-select rounded-0" name="id_prodi" id="id_prodi" required="required">
+                                                <?php
+                                                include "config.php";
+                                                $data = mysqli_query($koneksi, " select * from tb_prodi
+                                                          ");
+                                                while ($row = mysqli_fetch_array($data)) {
+                                                ?>
+                                                    <option value="<?php echo $row['nama_prodi']; ?>"><?php echo $row['nama_prodi']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="jml_penghasilan_ortu">Jumlah Penghasilan Orang Tua</label>
-                                            <input name="jml_penghasilan_ortu" type="text" class="form-control" id="jml_penghasilan_ortu" placeholder="jml_penghasilan_ortu" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="assets">Jumlah Assets</label>
-                                            <input name="assets" type="text" class="form-control" id="assets" placeholder="assets" required />
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="tanggungan">Tanggungan</label>
-                                            <input name="tanggungan" type="text" class="form-control" id="tanggungan" placeholder="tanggungan" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="jarak_rumah">Jarak Rumah</label>
-                                            <input name="jarak_rumah" type="text" class="form-control" id="jarak_rumah" placeholder="jarak_rumah" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Daya lsitrik</label>
-                                            <select class="custom-select rounded-0" name="daya_listrik" id="daya_listrik" required="required">
-                                                <option>--Pilih Salah Satu---</option>
-                                                <option>450 W</option>
-                                                <option>900 W</option>
-                                                <option>>=1300 W</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sumber Air</label>
-                                            <select class="custom-select rounded-0" name="sumber_air" id="sumber_air" required="required">
-                                                <option>--Pilih Salah Satu---</option>
-                                                <option>Sumur Galian</option>
-                                                <option>Sumur Pompa</option>
-                                                <option>Air PAM</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jenis Pekerjaan Ayah</label>
-                                            <select class="custom-select rounded-0" name="jns_pekerjaan_ayah" id="jns_pekerjaan_ayah" required="required">
-                                                <option>--Pilih Salah Satu---</option>
-                                                <option>Tidak Bekerja</option>
-                                                <option>Pegawai Tidak Tetap : Nelayan, Petani/Peternak, Pedagang, dsb</option>
-                                                <option>Pegawai Tetap : ASN, Pegawai BUMN BUMD, Swasta, dsb</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Jenis Pekerjaan Ibu</label>
-                                            <select class="custom-select rounded-0" name="jns_pekerjaan_ibu" id="jns_pekerjaan_ibu" required="required">
-                                                <option>--Pilih Salah Satu---</option>
-                                                <option>Tidak Bekerja</option>
-                                                <option>Pegawai Tidak Tetap : Nelayan, Petani/Peternak, Pedagang, dsb</option>
-                                                <option>Pegawai Tetap : ASN, Pegawai BUMN BUMD, Swasta, dsb</option>
-                                            </select>
-                                        </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary pull-right">Simpan</button>
-                                            <a href="mahasiswa.php" class="btn btn-success pull-right" style="margin-right:1%;">Batal</a>
-                                        </div>
-                                    </div>
+                                            <?php
+                                            $kriteria = mysqli_query($koneksi, "select * from tb_kriteria");
+
+                                            while ($dkri = mysqli_fetch_assoc($kriteria)) {
+                                            ?>
+
+                                                <label><?php echo $dkri['nama_kriteria']; ?></label>
+                                                <!-- <input name="id_kriteria<?php echo $i; ?>" value="<?php echo $dkri['id_kriteria']; ?>" /> -->
+                                                <option value="<?php echo $row['id_kriteria']; ?>"><?php echo $row['id_kriteria']; ?></option>
+
+                                                <br></br>
+                                                <div class="col-md-8">
+
+                                                <?php
+                                            }
+                                                ?>
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary pull-right">Simpan</button>
+                                                    <a href="mahasiswa.php" class="btn btn-success pull-right" style="margin-right:1%;">Batal</a>
+                                                </div>
+                                                </div>
                                 </form>
                             </div>
                             <!-- /.card-body -->
