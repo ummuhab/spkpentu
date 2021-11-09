@@ -104,7 +104,7 @@
                                                                 <form method="POST" action="update_prodi.php">
                                                                     <div class="form-group">
                                                                         <label>ID Prodi</label>
-                                                                        <input name="id_prodi" type="text" class="form-control" id="id_prodi" placeholder="" value="<?php echo $row['id_prodi']; ?>" readonly />
+                                                                        <input name="id_prodi" type="hidden" class="form-control" id="id_prodi" placeholder="" value="<?php echo $row['id_prodi']; ?>" readonly />
                                                                     </div>
 
                                                                     <div class="form-group">

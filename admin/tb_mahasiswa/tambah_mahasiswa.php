@@ -94,25 +94,25 @@ require_once 'config.php';
                                         <div class="form-group">
                                             <?php
                                             $kriteria = mysqli_query($koneksi, "select * from tb_kriteria");
-
-                                            while ($dkri = mysqli_fetch_assoc($kriteria)) {
+                                            $subkriteria = mysqli_query($koneksi, "select * from tb_subkriteria");
+                                            while ($dkri = mysqli_fetch_array($kriteria)) {
                                             ?>
 
                                                 <label><?php echo $dkri['nama_kriteria']; ?></label>
-                                                <!-- <input name="id_kriteria<?php echo $i; ?>" value="<?php echo $dkri['id_kriteria']; ?>" /> -->
-                                                <option value="<?php echo $row['id_kriteria']; ?>"><?php echo $row['id_kriteria']; ?></option>
-
-                                                <br></br>
-                                                <div class="col-md-8">
-
-                                                <?php
-                                            }
+                                                <?php while ($dskri = mysqli_fetch_array($subkriteria)) {
                                                 ?>
-                                                <div class="card-footer">
-                                                    <button type="submit" class="btn btn-primary pull-right">Simpan</button>
-                                                    <a href="mahasiswa.php" class="btn btn-success pull-right" style="margin-right:1%;">Batal</a>
-                                                </div>
-                                                </div>
+                                                    <select class="custom-select rounded-0" name="id_subkriteria" id="id_subkriteria" required="required">
+                                                        <option value="<?php echo $dskri['id_subkriteria']; ?>"><?php echo $dskri['nama_subkriteria']; ?> </option>
+                                                <?php
+                                                }
+                                            } ?>
+                                                    </select>
+
+                                                    <div class="card-footer">
+                                                        <button type="submit" class="btn btn-primary pull-right">Simpan</button>
+                                                        <a href="mahasiswa.php" class="btn btn-success pull-right" style="margin-right:1%;">Batal</a>
+                                                    </div>
+                                        </div>
                                 </form>
                             </div>
                             <!-- /.card-body -->

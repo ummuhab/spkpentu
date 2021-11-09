@@ -79,28 +79,10 @@
                   <center>Prodi</center>
                 </th>
                 <th>
-                  <center>Jumlah Penghasilan Orang Tua</center>
+                  <center>Nama Kriteria</center>
                 </th>
                 <th>
-                  <center>Jumlah Assets</center>
-                </th>
-                <th>
-                  <center>Tanggungan</center>
-                </th>
-                <th>
-                  <center>Jarak Rumah</center>
-                </th>
-                <th>
-                  <center>Daya Listrik</center>
-                </th>
-                <th>
-                  <center>Sumber Air</center>
-                </th>
-                <th>
-                  <center>Jenis Pekerjaan Ayah</center>
-                </th>
-                <th>
-                  <center>Jenis Pekerjaan Ibu</center>
+                  <center>Nilai Kriteria</center>
                 </th>
                 <th>
                   <center>Aksi</center>
@@ -132,29 +114,12 @@
                     <?php echo $row['nama_prodi']; ?>
                   </td>
                   <td>
-                    <?php echo $row['jml_penghasilan_ortu']; ?>
+                    <?php echo $row['nama_kriteria']; ?>
                   </td>
                   <td>
-                    <?php echo $row['assets']; ?>
+                    <?php echo $row['nama_subkriteria']; ?>
                   </td>
-                  <td>
-                    <?php echo $row['tanggungan']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['jarak_rumah']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['daya_listrik']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['sumber_air']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['jns_pekerjaan_ayah']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['jns_pekerjaan_ibu']; ?>
-                  </td>
+
                   <td>
                     <div class="w3-dropdown-hover">
 
