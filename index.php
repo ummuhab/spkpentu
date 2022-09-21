@@ -36,8 +36,6 @@
                 <a class="h3"><b>Sistem Pendukung Keputusan Penentuan UKT PNC</b></a>
             </div>
             <div class="card-body">
-                <p class="login-box-msg">Ayok masuk..</p>
-
                 <form action="cek_login.php" method="post">
                     <div class="input-group mb-3">
                         <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
@@ -59,7 +57,7 @@
 
                     <div class="row">
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                            <button type="submit" class="btn btn-block btn-primary">Log In</button>
                         </div>
                         <!-- /.col -->
                     </div>

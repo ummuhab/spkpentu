@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 
 <head>
   <meta charset="utf-8">
@@ -23,7 +26,7 @@
     <?php
     require_once 'config.php';
     include '../../AdminLTE/header.php';
-    include '../../AdminLTE/sidebar.php';
+    include '../sidebar.php';
     ?>
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -37,7 +40,7 @@
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Data User</li>
+                <li class="breadcrumb-item active">Data Mahasiswa</li>
               </ol>
             </div>
           </div>
@@ -45,27 +48,42 @@
       </section>
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Berikut merupakan data MAHASISWA di Politeknik Negeri Cilacap</h3>
+          <h3 class="card-title">Berikut merupakan data mahasiswa di Politeknik Negeri Cilacap</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <form action="mahasiswa.php" method="get">
+                <div class="row">
+                  <div class="col-9">
+                    <select class="custom-select rounded-0" name="periode" id="periode" required="required">
+                      <?php
 
-          <form method="post" enctype="multipart/form-data" action="upload_aksi.php">
-            <div class="form-group">
-              <h5>IMPORT DATA</h5>
-              Pilih File:
-              <input name="mahasiswa" type="file" required="required">
-              <input name="upload" type="submit" value="Import">
+                      $data_periode = mysqli_query($koneksi, " SELECT * from periode order by id_periode desc");
+                      while ($rows = mysqli_fetch_array($data_periode)) {
+                      ?>
+                        <option value="<?php echo $rows['id_periode']; ?>"><?php echo $rows['nama_periode']; ?></option>
+                      <?php
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <button type="submit" class="btn btn-primary btn-block">FILTER</button>
+                  </div>
+                </div>
+              </form>
             </div>
-          </form>
-
-
-          <a href="tambah_mahasiswa.php" class="btn btn-success pull-right"><i class="fas fa-plus"></i><span> Tambah Data</span></a>
+          </div>
           <br></br>
           <table id="example1" class="table table-bordered table-striped">
 
             <thead>
               <tr>
+                <th>
+                  <center>Nama Periode</center>
+                </th>
                 <th>
                   <center>NIM</center>
                 </th>
@@ -78,29 +96,31 @@
                 <th>
                   <center>Prodi</center>
                 </th>
-                <th>
-                  <center>Nama Kriteria</center>
-                </th>
-                <th>
-                  <center>Nilai Kriteria</center>
-                </th>
-                <th>
-                  <center>Aksi</center>
-                </th>
 
               </tr>
             </thead>
             <tbody>
               <?php
               include "config.php";
-              $data = mysqli_query($koneksi, " select
-                                                               *
-                                                          from tb_mahasiswa
-                                                          ");
+              if (isset($_GET['periode'])) {
+                $data = mysqli_query($koneksi, " select tb_mahasiswa.*, tb_prodi.nama_prodi, periode.nama_periode
+                  from tb_mahasiswa, tb_prodi, periode
+                  WHERE tb_mahasiswa.id_prodi = tb_prodi.id_prodi and tb_mahasiswa.id_periode = periode.id_periode and tb_mahasiswa.id_periode=" . $_GET['periode'] . " order by ABS(tb_mahasiswa.NIM) asc");
+              } else {
+                $ceknowperiode = mysqli_query($koneksi, "SELECT id_periode FROM periode order by id_periode  desc LIMIT 1");
+                $per = mysqli_fetch_assoc($ceknowperiode);
+                $data = mysqli_query($koneksi, " select tb_mahasiswa.*, tb_prodi.nama_prodi, periode.nama_periode
+                                from tb_mahasiswa, tb_prodi, periode 
+                                WHERE tb_mahasiswa.id_prodi = tb_prodi.id_prodi and tb_mahasiswa.id_periode = periode.id_periode AND tb_mahasiswa.id_periode=" . $per['id_periode'] . " order by ABS(tb_mahasiswa.NIM) asc");
+              }
+
               while ($row = mysqli_fetch_array($data)) {
               ?>
 
                 <tr>
+                  <td>
+                    <?php echo $row['nama_periode']; ?>
+                  </td>
                   <td>
                     <?php echo $row['NIM']; ?>
                   </td>
@@ -113,25 +133,9 @@
                   <td>
                     <?php echo $row['nama_prodi']; ?>
                   </td>
-                  <td>
-                    <?php echo $row['nama_kriteria']; ?>
-                  </td>
-                  <td>
-                    <?php echo $row['nama_subkriteria']; ?>
-                  </td>
 
-                  <td>
-                    <div class="w3-dropdown-hover">
 
-                      <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                        <center>
-                          <a href='hapus_mahasiswa.php?NIM=<?php echo $row['NIM'];  ?>' class="btn btn-danger"> <i class="fas fa-trash"></i>
-                            Hapus
-                          </a>
-                        </center>
-                      </div>
-                    </div>
-                  </td>
+
                 </tr>
 
               <?php

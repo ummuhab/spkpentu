@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 
 <head>
     <meta charset="utf-8">
@@ -23,8 +26,8 @@
         <?php
         require_once 'config.php';
         include '../../AdminLTE/header.php';
-        include '../../AdminLTE/sidebar.php';
-        ?>f
+        include '../sidebar.php';
+        ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -37,7 +40,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Data User</li>
+                                <li class="breadcrumb-item active">Data Prodi</li>
                             </ol>
                         </div>
                     </div>
@@ -49,8 +52,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <a data-toggle="modal" data-target="#modal-tambah" class="btn btn-success pull-right"><i class="fas fa-plus"></i><span> Tambah Data</span></a>
-                    <br></br>
+
                     <table id="example1" class="table table-bordered table-striped">
 
                         <thead>
@@ -84,56 +86,6 @@
                                             <?php echo $row['nama_prodi']; ?>
                                         </center>
                                     </td>
-
-                                    <td>
-                                        <div class="w3-dropdown-hover">
-
-                                            <div class="w3-dropdown-content w3-bar-block w3-card-4">
-
-                                                <!-- modal edit -->
-                                                <div class="modal fade" id="modal-edit<?php echo $row['id_prodi']; ?>">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title">Edit Data Golongan UKT</h4>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form method="POST" action="update_prodi.php">
-                                                                    <div class="form-group">
-                                                                        <label>ID Prodi</label>
-                                                                        <input name="id_prodi" type="hidden" class="form-control" id="id_prodi" placeholder="" value="<?php echo $row['id_prodi']; ?>" readonly />
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label>Nama Prodi</label>
-                                                                        <input name="nama_prodi" type="text" class="form-control" id="nama_prodi" placeholder="nama_prodi" value="<?php echo $row['nama_prodi']; ?>" required />
-                                                                    </div>
-                                                            </div>
-
-                                                            <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="edit" id="edit" class="btn btn-primary" name="edit">Save changes</button>
-                                                            </div>
-                                                            </form>
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-                                                <!-- /.modal -->
-
-                                                <center> <a data-toggle="modal" data-target="#modal-edit<?php echo $row['id_prodi']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i>Edit
-                                                    </a>
-                                                    <a href='hapus_prodi.php?id_prodi=<?php echo $row['id_prodi'];  ?>' class="btn btn-danger"> <i class="fas fa-trash"></i>
-                                                        Hapus
-                                                    </a>
-                                                </center>
-                                            </div>
-                                        </div>
-                                    </td>
                                 </tr>
 
                             <?php
@@ -152,41 +104,7 @@
         include '../../AdminLTE/footer.php';
         ?>
 
-        <!-- modal tambah -->
-        <div class="modal fade" id="modal-tambah">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Tambah Data Golongan UKT</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="input_prodi.php">
-                            <!-- <div class="form-row"> -->
 
-
-                            <div class="form-group">
-                                <label>Nama Prodi</label>
-                                <input name="nama_prodi" type="text" class="form-control" id="nama_prodi" required />
-                            </div>
-
-
-                            <!-- </div> -->
-
-                            <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="tambah" class="btn btn-primary" id="tambah" name="tambah">Save changes</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-        </div>
     </div>
 
 

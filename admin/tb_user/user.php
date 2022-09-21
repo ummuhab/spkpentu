@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+?>
 
 <head>
     <meta charset="utf-8">
@@ -23,7 +26,7 @@
         <?php
         require_once 'config.php';
         include '../../AdminLTE/header.php';
-        include '../../AdminLTE/sidebar.php';
+        include '../sidebar.php';
         ?>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -45,7 +48,7 @@
             </section>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Berikut merupakan data Pengguna SPK Penentuan UKT</h3>
+                    <h3 class="card-title">Berikut merupakan data pengguna SPK Penentuan UKT</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -127,17 +130,17 @@
                                                                     <div class="form-group">
                                                                         <label>User Level</label>
                                                                         <select class="custom-select rounded-0" name="lvl" id="lvl" required="required">
-                                                                            <option>--Pilih Salah Satu---</option>
-                                                                            <option value="TIM PMB">TIM PMB</option>
-                                                                            <option value="BAAK">BAAK</option>
-                                                                            <option value="Keuangan">Keuangan</option>
+
+                                                                            <option <?= $row['lvl'] == 'PANITIA PMB' ? 'selected' : ''; ?>>PANITIA PMB</option>
+                                                                            <option <?= $row['lvl'] == 'BAAK' ? 'selected' : ''; ?>>BAAK</option>
+                                                                            <option <?= $row['lvl'] == 'Keuangan' ? 'selected' : ''; ?>>Keuangan</option>
                                                                         </select>
                                                                     </div>
                                                             </div>
 
                                                             <div class="modal-footer justify-content-between">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                                <button type="edit" id="edit" class="btn btn-primary" name="edit">Save changes</button>
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                                                <button type="edit" id="edit" class="btn btn-primary" name="edit">Simpan Perubahan</button>
                                                             </div>
                                                             </form>
                                                         </div>
@@ -151,7 +154,7 @@
                                             </div>
                                             <center> <a data-toggle="modal" data-target="#modal-edit<?php echo $row['username']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i>Edit
                                                 </a>
-                                                <a href='hapus_user.php?username=<?php echo $row['username']; ?>' class="btn btn-danger"> <i class="fas fa-trash"></i>
+                                                <a onclick="return confirm('Apakah kamu yakin ingin menghapus data?')" href='hapus_user.php?username=<?php echo $row['username']; ?>' class="btn btn-danger"> <i class="fas fa-trash"></i>
                                                     Hapus
                                                 </a>
                                             </center>
@@ -203,8 +206,7 @@
                             <div class="form-group">
                                 <label>User Level</label>
                                 <select class="custom-select rounded-0" name="lvl" id="lvl" required="required">
-                                    <option>--Pilih Salah Satu---</option>
-                                    <option value="TIM PMB">TIM PMB</option>
+                                    <option value="PANITIA PMB">PANITIA PMB</option>
                                     <option value="BAAK">BAAK</option>
                                     <option value="Keuangan">Keuangan</option>
                                 </select>
@@ -212,8 +214,8 @@
                             <!-- </div> -->
 
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="tambah" class="btn btn-primary" id="tambah" name="tambah">Save changes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                <button type="tambah" class="btn btn-primary" id="tambah" name="tambah">Simpan</button>
                             </div>
                         </form>
                     </div>
